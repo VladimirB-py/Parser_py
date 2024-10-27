@@ -6,12 +6,16 @@ link = "https://httpbin.org/"
 
 user = fake_useragent.UserAgent().random
 header = {'user-agent': user}
+data = {
+    'login':'123',
+    'pass':'123',
+    }
 
 with requests.Session() as s:
-    res=s.get(link, headers=header).text
-
+    res=s.get(link, data=data, headers=header).text
+    #print(f'res - {res}')
     soup = BeautifulSoup(res, 'lxml')
-    block = soup.find('span', id='//*[@id="swagger-ui"]/div/div[2]/div[3]/section/div/div[7]')
+    block = soup.find('div', id='swagger-ui')
     #span_find = block.find('span')
-    print(soup, block)
-    #print(f'text - {h2_find}')
+    #print(f'soup - {soup}')
+    print(f'blk - {block}')
