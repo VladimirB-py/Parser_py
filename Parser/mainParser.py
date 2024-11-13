@@ -1,14 +1,23 @@
-import fake_useragent
 import requests
-from bs4 import BeautifulSoup
 
-user=fake_useragent.UserAgent().random
-header={'user-agent': user}
-link = "https://3.python-requests.org/user/quickstart/"
+headers = {
+    "accept": "*/* accept-encoding:gzip, deflate, br, zstdaccept-language:ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 \
+    Safari/537.36 Edg/130.0.0.0"
+}
 
-res = requests.get(link, headers=header).text
-soup=BeautifulSoup(res, 'lxml')
-block=soup.find('div', id='binary-response-content')
-h2_find=block.find('h2')
-#print(block)
-print(f'text - {h2_find}')
+def get_page(url):
+    s=requests.Session()
+    responses=s.post(url=url, headers=headers)
+
+    with open("index.html", "w", encoding="utf-8") as file:
+        file.write(responses.text)
+
+
+#https://www.ozon.ru/category/nasosy-dlya-gsm-30312/?sorting=price
+def main():
+    get_page(url="https://salomonrussia.ru/product-category/obuv/?orderby=price&filter_tselevaya-gruppa=men-unisex")
+
+
+if __name__ == "__main__":
+    main()
