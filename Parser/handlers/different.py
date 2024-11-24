@@ -3,7 +3,7 @@ from aiogram import F, Router
 
 router= Router()
 
-@router.message(F.text)
+@router.message(F.text == "секретное сообщение")
 async def message_with_text(message):
     await message.answer('text message')
 

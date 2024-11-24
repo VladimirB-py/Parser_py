@@ -10,14 +10,14 @@ router=Router()
 async def start_cmd(message):
     await message.answer("Hello my friend", reply_markup=choose())
 
-@router.message(F.text.lower == "погода")
+@router.message(F.text.lower() == "погода")
 async def weather(message):
-    await message.answer("The Weather is like today", reply_markup=ReplyKeyboardRemove)
+    await message.answer("The Weather is like today", reply_markup=ReplyKeyboardRemove())
 
-@router.message(F.text.lower == "валюта")
+@router.message(F.text.lower() == "валюта")
 async def usdt(message):
-    await message.answer("MoneyMoneyMoney", reply_markup=ReplyKeyboardRemove)
+    await message.answer("MoneyMoneyMoney", reply_markup=ReplyKeyboardRemove())
 
-@router.message(F.text.lower == "новости")
+@router.message(F.text.lower() == "новости")
 async def news(message):
-    await message.answer("In Bogdad is very good", reply_markup=ReplyKeyboardRemove)
+    await message.answer("In Bogdad is very good", reply_markup=ReplyKeyboardRemove())
