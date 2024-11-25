@@ -1,4 +1,8 @@
+import asyncio
+
 import requests
+#import teleg_bot
+
 
 headers = {
     "accept": "*/* accept-encoding:gzip, deflate, br, zstdaccept-language:ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7",
@@ -12,12 +16,14 @@ def get_page(url):
 
     with open("index.html", "w", encoding="utf-8") as file:
         file.write(responses.text)
+        print(file)
 
 
 #https://www.ozon.ru/category/nasosy-dlya-gsm-30312/?sorting=price
-def main():
+def mainParse():
     get_page(url="https://salomonrussia.ru/product-category/obuv/?orderby=price&filter_tselevaya-gruppa=men-unisex")
 
 
 if __name__ == "__main__":
-    main()
+    mainParse()
+    #teleg_bot.asyncio.run(teleg_bot.main())

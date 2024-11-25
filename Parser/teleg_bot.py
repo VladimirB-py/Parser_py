@@ -3,7 +3,6 @@ from aiogram import Bot, Dispatcher
 from Parser.s import TOKEN
 from Parser.handlers import questions, different
 
-
 async def main():
     bot = Bot(token=TOKEN)
     dp = Dispatcher()

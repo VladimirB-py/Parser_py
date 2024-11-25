@@ -1,7 +1,7 @@
 from aiogram import F, Router
 from aiogram.filters import Command
-from aiogram.types import ReplyKeyboardRemove
-
+from aiogram.types import ReplyKeyboardRemove, FSInputFile
+from Parser.handlers.screenshot import screenshot_func
 from Parser.keyboards.choose import choose
 
 router=Router()
@@ -12,12 +12,16 @@ async def start_cmd(message):
 
 @router.message(F.text.lower() == "погода")
 async def weather(message):
-    await message.answer("The Weather is like today", reply_markup=ReplyKeyboardRemove())
+    await screenshot_func('weather')
+    await message.answer_photo(FSInputFile('weather.png' ))
 
 @router.message(F.text.lower() == "валюта")
 async def usdt(message):
-    await message.answer("MoneyMoneyMoney", reply_markup=ReplyKeyboardRemove())
+    await screenshot_func('rubus')
+    await message.answer_photo(FSInputFile('rubus.png'))
 
 @router.message(F.text.lower() == "новости")
 async def news(message):
-    await message.answer("In Bogdad is very good", reply_markup=ReplyKeyboardRemove())
+    await screenshot_func('news')
+    await message.answer_photo(FSInputFile('news.png'))
+
