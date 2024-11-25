@@ -4,14 +4,14 @@ from pyppeteer import launch
 async def take_screenshot(url, path):
     browser = await launch(
         executablePath="c:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-        headless=False,
+        headless=True,
     )
 
     clip = {
         'x': 0,
         'y': 0,
-        'width': 1800,
-        'height': 900,
+        'width': 900,
+        'height': 800,
     }
 
     page=await  browser.newPage()
@@ -30,7 +30,5 @@ async def screenshot_func(string):
         'rubus': 'https://yandex.ru/search/?text=%D0%BF%D0%B0%D1%80%D0%B0+%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80+%D1%80%D1%83%D0%B1%D0%BB%D1%8C&lr=39&clid=2233626&src=suggest_B',
         'news': 'https://dzen.ru/',
     }
-    print(url_str[string])
 
-    #asyncio.get_event_loop().run_until_complete(take_screenshot(url=url_str[string], path=f"{string}.png"))
     await take_screenshot(url=url_str[string], path=f"{string}.png")
