@@ -9,9 +9,9 @@ async def take_screenshot(url, path):
 
     clip = {
         'x': 0,
-        'y': 0,
-        'width': 900,
-        'height': 800,
+        'y': 250,
+        'width': 670,
+        'height': 400,
     }
 
     page=await  browser.newPage()
