@@ -20,6 +20,7 @@ async def take_screenshot(url, path):
     await page.screenshot({
         "path": path,
         "clip": clip,
+        "fullPage": True,
     })
     await browser.close()
 
